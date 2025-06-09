@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<settings>
+	<pluginGroup>
+		<pluginGroup>org.mule.tools</pluginGroup>
+	</pluginGroup>
+	
+	<servers>
+		<server>
+			<id>Repository</id>
+			<username>~~~Client~~~</username>
+			<password>${client.id}~?~${client.sectret}</password>
+		</server>
+	</servers>
+</settings>
