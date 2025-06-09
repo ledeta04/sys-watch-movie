@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:apikit="http://www.mulesoft.org/schema/mule/mule-apikit" xmlns:http="http://www.mulesoft.org/schema/mule/http"
+	xmlns:db="http://www.mulesoft.org/schema/mule/db"
+	xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/db http://www.mulesoft.org/schema/mule/db/current/mule-db.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd
+http://www.mulesoft.org/schema/mule/mule-apikit http://www.mulesoft.org/schema/mule/mule-apikit/current/mule-apikit.xsd">
+	<db:config name="Database_Config" doc:name="Database Config" doc:id="d302396b-2e8f-4f34-ae83-72ac31ea5b0f" >
+		<db:my-sql-connection host="${db.host}" port="${db.port}" user="${db.userName}" password="${db.passWord}" database="${db.name}" />
+	</db:config>
+	<apikit:config name="movieapi-config" api="resource::fd026635-9588-419f-ad28-3afe48a54fa9:movieapi:1.0.0:raml:zip:movieapi.raml" outboundHeadersMapName="outboundHeaders" httpStatusVarName="httpStatus" />
+	<http:listener-config name="HTTP_Listener_config" doc:name="HTTP Listener config" doc:id="b22129d4-965e-493f-9b62-3bcfbaea1eb0" >
+		<http:listener-connection host="${http.host}" port="${http.port}" />
+		
+
+	</http:listener-config>
+	<configuration-properties doc:name="Configuration properties" doc:id="bb1c47ce-3bf2-4273-900c-5c0a89d91bf8" file="dev.yaml" />
+</mule>
