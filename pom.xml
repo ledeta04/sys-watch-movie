@@ -4,7 +4,7 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
-	<groupId>fd026635-9588-419f-ad28-3afe48a54fa9</groupId>
+	<groupId>com.mycompany</groupId>
 	<artifactId>sys-watch-movie</artifactId>
 	<version>1.0.0-SNAPSHOT</version>
 	<packaging>mule-application</packaging>
@@ -29,29 +29,26 @@
 			<plugin>
 				<groupId>org.mule.tools.maven</groupId>
 				<artifactId>mule-maven-plugin</artifactId>
-				<version>3.7.1</version>
+				<version>${mule.maven.plugin.version}</version>
 				<extensions>true</extensions>
 				<configuration>
+
 					<cloudhub2Deployment>
 						<uri>https://anypoint.mulesoft.com</uri>
 						<provider>MC</provider>
 						<environment>Sandbox</environment>
-						<target>${targetName}</target>
-						<muleVersion>${muleVersion}</muleVersion>
-						<username>ledeta05</username>
-						<password>Lemlem11!}</password>
+						<target>Cloudhub-US-East-2</target>
+						<muleVersion>4.4.0</muleVersion>
+						<username>${anypoint.username}</username>
+						<password>${anypoint.password}</password>
 						<applicationName>sys-watch-movie</applicationName>
 						<replicas>1</replicas>
-						<vCores>1</vCores>
+						<vCores>0.1</vCores>
+						<deploymentSettings>
+							<generateDefaultPublicUrl>true</generateDefaultPublicUrl>
+						</deploymentSettings>
 					</cloudhub2Deployment>
-				</configuration>
-			</plugin>
-			<plugin>
-				<groupId>org.mule.tools.maven</groupId>
-				<artifactId>mule-maven-plugin</artifactId>
-				<version>${mule.maven.plugin.version}</version>
-				<extensions>true</extensions>
-				<configuration>
+
 					<sharedLibraries>
 						<sharedLibrary>
 							<groupId>mysql</groupId>
@@ -62,14 +59,6 @@
 			</plugin>
 		</plugins>
 	</build>
-	  <distributionManagement>
-    <repository>
-      <id>Repository</id>
-      <name>Corporate Repository</name>
-      <url>https://maven.anypoint.mulesoft.com/api/v3/fd026635-9588-419f-ad28-3afe48a54fa9/maven</url>
-      <layout>default</layout>
-    </repository>
-  </distributionManagement>
 
 	<dependencies>
 		<dependency>
@@ -110,6 +99,14 @@
 		</dependency>
 	</dependencies>
 
+	<distributionManagement>
+		<repository>
+			<id>anypoint-exchange-v3</id>
+			<name>anypoint-exchange-v3</name>
+			<url>https://maven.anypoint.mulesoft.com/api/v3/organizations/fd026635-9588-419f-ad28-3afe48a54fa9/maven</url>
+			<layout>default</layout>
+		</repository>
+	</distributionManagement>
 	<repositories>
 		<repository>
 			<id>anypoint-exchange-v3</id>
